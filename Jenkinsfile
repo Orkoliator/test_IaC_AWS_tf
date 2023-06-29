@@ -1,10 +1,8 @@
 node {
     try{
-        def s = checkout scm
-        def GITURL = s.GIT_URL
-        def GITBRANCH = s.GIT_BRANCH
-        //def GITURL = scm.userRemoteConfigs[0].url
-        //def GITBRANCH = scm.branches[0].name
+        checkout scm
+        def GITURL = scm.userRemoteConfigs[0].url
+        def GITBRANCH = scm.branches[0].name
     }
     catch(err){
         throw err
