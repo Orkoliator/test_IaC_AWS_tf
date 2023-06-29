@@ -8,7 +8,7 @@ node {
         throw err
         error "Colud not find any Git repository for the pipeline"
     }
-    step('debug') {
+    step('git_debug') {
         echo "git url: ${GITURL} | branch: ${GITBRANCH}"
     }
     withCredentials([string(credentialsId: 'aws-access-key', variable: 'ACCESSKEY'), string(credentialsId: 'aws-secret-key', variable: 'SECRETKEY')]) {
