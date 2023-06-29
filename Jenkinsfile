@@ -1,5 +1,5 @@
 node {
-    withCredentials([string(credentialsId: '2d194efa-7550-4d01-8264-487205f7a095', variable: 'ACCESSKEY'), string(credentialsId: '438b1012-2fa6-4ca2-b7b5-db07a2de98e0', variable: 'SECRETKEY')]) {
+    withCredentials([string(credentialsId: 'aws-access-key', variable: 'ACCESSKEY'), string(credentialsId: 'aws-secret-key', variable: 'SECRETKEY')]) {
         stage('test - terraform check') {
             bat "terraform --version"
         }
