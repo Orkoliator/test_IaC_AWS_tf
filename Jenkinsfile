@@ -2,7 +2,7 @@ node {
     try{
         checkout scm
         env.GITURL = scm.userRemoteConfigs[0].url
-        env.GITBRANCH = scm.branches[0].name
+        env.GITBRANCH = (scm.branches[0].name).split("/")[1]
     }
     catch(err){
         throw err
