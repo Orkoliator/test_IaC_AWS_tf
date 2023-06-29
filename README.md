@@ -1,6 +1,6 @@
 Hello,
 
-This is personal pet project with intention to develop some hands-on experience of Terraform and AWS.
+This is personal pet project with intention to get some hands-on experience of Jenkins, Terraform and AWS.
 
 To make this pipeline work there are few points required:
 - AWS IAM user with necessary permissions should exist
