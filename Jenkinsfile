@@ -3,6 +3,9 @@ node {
         stage('test - terraform check') {
             bat "terraform --version"
         }
+        stage('clone repository') {
+            git branch: 'main', url: 'https://github.com/Orkoliator/test_IaC_AWS_tf.git'
+        }
         stage('terraform configuration refresh') {
             bat "terraform init"
         }
