@@ -1,10 +1,15 @@
 node {
     withCredentials([string(credentialsId: 'aws-access-key', variable: 'ACCESSKEY'), string(credentialsId: 'aws-secret-key', variable: 'SECRETKEY')]) {
+        stage('debug') {
+            bat "scm.userRemoteConfigs[0]"
+        }
         stage('test - terraform check') {
             bat "terraform --version"
         }
-        stage('clone repository') {
-            git branch: 'main', url: 'https://github.com/Orkoliator/test_IaC_AWS_tf.git'
+        withEnv(['GITURL=scm.userRemoteConfigs[0].url', 'GITBRANCH=scm.branches[0].name']) {
+            stage('clone repository') {
+                git branch: '$GITBRANCH', url: '$GITURL'
+            }
         }
         stage('terraform configuration refresh') {
             bat "terraform init"
