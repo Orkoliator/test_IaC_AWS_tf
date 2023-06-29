@@ -1,8 +1,5 @@
 node {
     withCredentials([string(credentialsId: 'aws-access-key', variable: 'ACCESSKEY'), string(credentialsId: 'aws-secret-key', variable: 'SECRETKEY')]) {
-        stage('debug') {
-            bat "scm.userRemoteConfigs[0]"
-        }
         stage('test - terraform check') {
             bat "terraform --version"
         }
