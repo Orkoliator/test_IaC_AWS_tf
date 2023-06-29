@@ -7,6 +7,9 @@ node {
         throw err
         error "Colud not find any Git repository for the pipeline"
     }
+    step('debug') {
+        echo gi"t url: $${GITURL} | branch: ${GITBRANCH}"
+    }
     withCredentials([string(credentialsId: 'aws-access-key', variable: 'ACCESSKEY'), string(credentialsId: 'aws-secret-key', variable: 'SECRETKEY')]) {
         stage('test - terraform check') {
             bat "terraform --version"
