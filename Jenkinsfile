@@ -8,7 +8,7 @@ node {
         throw err
         error "Colud not find any Git repository for the pipeline"
     }
-    stege('git_debug') {
+    stage('git_debug') {
         echo "git url: ${env.GITURL} | branch: ${env.GITBRANCH}"
     }
     withCredentials([string(credentialsId: 'aws-access-key', variable: 'ACCESSKEY'), string(credentialsId: 'aws-secret-key', variable: 'SECRETKEY')]) {
