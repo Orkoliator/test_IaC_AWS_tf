@@ -5,7 +5,7 @@ node {
         }
         withEnv(['GITURL=scm.userRemoteConfigs[0].url', 'GITBRANCH=scm.branches[0].name']) {
             stage('clone repository') {
-                git branch: '${GITBRANCH}', url: '${GITURL}'
+                git branch: '${env.BRANCH_NAME}', url: '${env.REPO_URL}'
             }
         }
         stage('terraform configuration refresh') {
