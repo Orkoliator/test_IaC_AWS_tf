@@ -12,7 +12,7 @@ node {
             bat "terraform --version"
         }
         stage('clone repository') {
-            git branch: ${GITBRANCH}, url: ${GITURL}
+            git branch: "${GITBRANCH}", url: "${GITURL}"
         }
         stage('terraform configuration refresh') {
             bat "terraform init"
