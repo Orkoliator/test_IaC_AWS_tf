@@ -18,6 +18,9 @@ node {
             bat "SET AWS_ACCESS_KEY_ID=$ACCESSKEY"
             bat "SET AWS_SECRET_ACCESS_KEY_ID=$SECRETKEY"
         }
+        stage('test - show env') {
+            bat "SET"
+        }
         stage('test - terraform plan') {
             bat "terraform plan"
         }
