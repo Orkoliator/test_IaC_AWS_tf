@@ -1,5 +1,5 @@
 resource "aws_ecr_repository" "ecr_reg" {
-  name = "${var.ecs_name}-${var.aws_region}"
+  name = "${var.ecr_name}-${var.aws_region}"
   image_scanning_configuration {
 	    scan_on_push = true
 	  }
