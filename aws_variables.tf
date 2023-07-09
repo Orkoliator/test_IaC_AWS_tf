@@ -12,6 +12,6 @@ variable "aws_secret_key" {
 }
 
 variable "ecs_name" {
-    type = strings
+    type = string
     default = "test_ecs_repo"  
 }
