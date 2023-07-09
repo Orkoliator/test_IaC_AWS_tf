@@ -14,6 +14,9 @@ node {
         stage('test - terraform syntax check') {
             bat "terraform validate"
         }
+        stage('test - check env') {
+            bat "SET"
+        }
         stage('test - terraform plan') {
             bat "terraform plan"
         }
