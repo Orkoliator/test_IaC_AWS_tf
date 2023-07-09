@@ -9,10 +9,10 @@ node {
             bat "terraform --version"
         }
         stage('terraform configuration refresh') {
-            bat "terraform init"
+            bat "terraform init -no-color"
         }
         stage('test - terraform syntax check') {
-            bat "terraform validate"
+            bat "terraform validate -no-color"
         }
         stage('test - terraform plan') {
             bat "terraform plan -no-color"
