@@ -21,5 +21,5 @@ module "aws" {
 }
 
 module "docker" {
-  host = "tcp://127.0.0.1:1234/"
+  host = "tcp://127.0.0.1:2375/"
 }
