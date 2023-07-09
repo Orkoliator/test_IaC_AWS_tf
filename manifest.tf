@@ -16,5 +16,6 @@ variable "ecs_name" {
 module "dev-webserver" {
   source = "./AWS"
   aws_region = var.aws_region
+  ecr_name = var.ecr_name
   ecs_name = var.ecs_name
 }
