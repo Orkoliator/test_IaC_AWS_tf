@@ -8,11 +8,11 @@ node {
         stage('test - terraform software check') {
             bat "terraform --version"
         }
-        stage('test - terraform syntax check') {
-            bat "terraform validate"
-        }
         stage('terraform configuration refresh') {
             bat "terraform init"
+        }
+        stage('test - terraform syntax check') {
+            bat "terraform validate"
         }
         stage('test - terraform plan') {
             bat "terraform plan -var=aws_access_key='$ACCESSKEY' -var=aws_secret_key='$SECRETKEY'"
