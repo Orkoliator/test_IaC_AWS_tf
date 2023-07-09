@@ -8,6 +8,7 @@ To make this pipeline work there are few points required:
 - CloudBees AWS Credentials plugin should be installed on Jenkins
 - Amazon ECR plugin should be installed on Jenkins
 - Docker Pipeline plugin should be installed on Jenkins
+- Docker should be installed on Jenkins machine
 - AWS IAM user with necessary permissions should exist
 - AWS IAM user should have an access key and security key
 - access and security keys should be added to Jenkins credentials as secret text with "aws-access-key" and "aws-secret-key" IDs
