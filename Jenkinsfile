@@ -15,7 +15,7 @@ node {
             bat "terraform validate"
         }
         stage('test - terraform plan') {
-            bat "terraform plan"
+            bat "terraform plan -no-color"
         }
     }
 }
