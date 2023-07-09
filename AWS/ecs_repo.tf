@@ -1,3 +1,3 @@
-resource "aws_ecr_repository" "my_first_ecr_repo" {
-  name = var.ecs_name
+resource "aws_ecr_repository" "ecr_repo" {
+  name = "${var.ecs_name}-${var.aws_region}"
 }
