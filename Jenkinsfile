@@ -15,15 +15,15 @@ node {
             bat "terraform validate"
         }
         stage('preparing environment') {
-            bat "AWS_ACCESS_KEY_ID=$ACCESSKEY"
-            bat "AWS_SECRET_ACCESS_KEY_ID=$SECRETKEY"
+            bat "SET AWS_ACCESS_KEY_ID=$ACCESSKEY"
+            bat "SET AWS_SECRET_ACCESS_KEY_ID=$SECRETKEY"
         }
         stage('test - terraform plan') {
             bat "terraform plan"
         }
         stage('clearing environment') {
-            bat "AWS_ACCESS_KEY_ID="
-            bat "AWS_SECRET_ACCESS_KEY_ID="
+            bat "SET AWS_ACCESS_KEY_ID="
+            bat "SET AWS_SECRET_ACCESS_KEY_ID="
         }
     }
 }
