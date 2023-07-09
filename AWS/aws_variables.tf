@@ -1,7 +1,7 @@
-# variable "aws_region" {
-#     type = string
-# }
+variable "aws_region" {
+    type = string
+}
 
-# variable "ecs_name" {
-#     type = string
-# }
+variable "ecs_name" {
+    type = string
+}
