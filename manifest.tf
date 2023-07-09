@@ -1,3 +1,3 @@
 module "dev-webserver" {
-  source = "AWS"
+  source = "./AWS"
 }
