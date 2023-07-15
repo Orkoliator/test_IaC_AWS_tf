@@ -8,11 +8,11 @@ node {
         stage('test - terraform software check') {
             bat "terraform --version"
         }
-        stage('test - terraform providers check') {
-            bat "terraform providers -no-color"
-        }
         stage('terraform configuration refresh') {
             bat "terraform init -no-color"
+        }
+        stage('test - terraform providers check') {
+            bat "terraform providers -no-color"
         }
         stage('test - terraform syntax check') {
             bat "terraform validate -no-color"
