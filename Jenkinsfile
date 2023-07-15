@@ -9,7 +9,7 @@ node {
             bat "terraform --version"
         }
         stage('test - terrafrom check providers') {
-            bat "terraform providers"
+            bat "terraform providers -no-color"
         }
         stage('terraform configuration refresh') {
             bat "terraform init -no-color"
