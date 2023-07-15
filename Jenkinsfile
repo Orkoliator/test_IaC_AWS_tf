@@ -8,6 +8,9 @@ node {
         stage('test - terraform software check') {
             bat "terraform --version"
         }
+        stage('test - terrafrom check providers') {
+            bat "terraform providers"
+        }
         stage('terraform configuration refresh') {
             bat "terraform init -no-color"
         }
