@@ -1,11 +1,3 @@
-terraform {
-  required_providers {
-    docker = {
-      source  = "kreuzwerker/docker"
-    }
-  }
-}
-
 
 module "aws" {
   source = "./AWS"
@@ -15,6 +7,7 @@ module "aws" {
 }
 
 module "docker" {
+  source = "./docker"
   host = "tcp://127.0.0.1:2375/"
   docker_image_url = var.docker_image_url
 }
