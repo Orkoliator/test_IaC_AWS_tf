@@ -1,18 +1,3 @@
-variable "aws_region" {
-    type = string
-    default = "eu-central-1"  
-}
-
-variable "ecr_name" {
-    type = string
-    default = "test_ecr_reg"  
-}
-
-variable "ecs_name" {
-    type = string
-    default = "test_ecs_repo"
-}
-
 module "aws" {
   source = "./AWS"
   aws_region = var.aws_region
@@ -22,4 +7,5 @@ module "aws" {
 
 module "docker" {
   host = "tcp://127.0.0.1:2375/"
+  docker_image_url = var.docker_image_url
 }
