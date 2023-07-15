@@ -1,3 +1,7 @@
+variable "docker_host" {
+    type = string
+}
+
 variable "docker_image_url" {
     type = string
 }
