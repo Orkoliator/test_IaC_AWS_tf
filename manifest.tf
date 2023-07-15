@@ -8,7 +8,7 @@ module "aws" {
 
 module "docker" {
   source = "./docker"
-  host = "tcp://127.0.0.1:2375/"
+  docker_host = var.docker_host
   docker_image_url = var.docker_image_url
   docker_image_name = var.docker_image_name
   docker_image_author = var.docker_image_author

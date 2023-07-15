@@ -9,5 +9,5 @@ terraform {
 
 
 provider "docker" {
-    host = var.host
+    host = var.docker_host
 }
