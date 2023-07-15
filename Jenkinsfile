@@ -8,7 +8,10 @@ node {
         stage('test - terraform software check') {
             bat "terraform --version"
         }
-        stage('terraform configuration refresh') {
+        stage('terraform provider fix') {
+            bat "terraform state replace-provider hashicorp/docker kreuzwerker/docker -no-color"
+        }
+        stage('test - terraform providers check') {
             bat "terraform providers -no-color"
         }
         stage('terraform configuration refresh') {
