@@ -1,6 +1,6 @@
 variable "docker_host" {
     type = string
-    default = "tcp://host.docker.internal:2375/"
+    default = "tcp://172.17.0.1:2375/"
 }
 
 variable "docker_image_url" {
