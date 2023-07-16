@@ -6,19 +6,19 @@ node {
     }
     withCredentials([string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY_ID'), string(credentialsId: 'aws-secret-key', variable: 'AWS_SECRET_ACCESS_KEY')]) {
         stage('test - terraform software check') {
-            bat "terraform --version"
+            sh "terraform --version"
         }
         stage('terraform configuration refresh') {
-            bat "terraform init -no-color"
+            sh "terraform init -no-color"
         }
         stage('test - terraform providers check') {
-            bat "terraform providers -no-color"
+            sh "terraform providers -no-color"
         }
         stage('test - terraform syntax check') {
-            bat "terraform validate -no-color"
+            sh "terraform validate -no-color"
         }
         stage('test - terraform plan') {
-            bat "terraform plan -no-color"
+            sh "terraform plan -no-color"
         }
     }
 }

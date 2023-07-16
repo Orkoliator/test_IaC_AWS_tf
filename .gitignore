@@ -1,3 +1,4 @@
 vars.tf
 AWS_creds.tf
 .terraform*
+scripts/*
