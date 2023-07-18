@@ -18,3 +18,6 @@ variable "docker_image_tag" {
     type = string
 }
 
+variable "ecr_url" {
+    type = string
+}

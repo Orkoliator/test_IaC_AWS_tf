@@ -7,7 +7,11 @@ terraform {
   }
 }
 
-
 provider "docker" {
-    host = var.docker_host
+  host = var.docker_host
+  registry_auth {
+    address  = "${var.ecr_url}"
+    username = "someuser"
+    password = "somepass"
+  }
 }

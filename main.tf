@@ -13,4 +13,5 @@ module "docker" {
   docker_image_name = var.docker_image_name
   docker_image_author = var.docker_image_author
   docker_image_tag = var.docker_image_tag
+  ecr_url = "${module.aws.ecr_url}"
 }
