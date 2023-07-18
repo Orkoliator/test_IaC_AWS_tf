@@ -15,6 +15,7 @@ module "docker_image" {
   ecr_url = "${module.aws_ecr.ecr_url}"
   ecr_username = "${module.aws_ecr.ecr_username}"
   ecr_password = "${module.aws_ecr.ecr_password}"
+  depends_on = [module.aws_ecr]
 }
 
 module "aws_application" {
@@ -24,4 +25,5 @@ module "aws_application" {
   ecs_service_name = var.ecs_service_name
   ecr_url = "${module.aws_ecr.ecr_url}"
   container_image_name = "${module.docker_image.container_image_name}"
+  depends_on = [module.docker_image]
 }
