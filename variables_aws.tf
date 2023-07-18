@@ -18,3 +18,8 @@ variable "ecs_service_name" {
     default = "test_ecs_service"
 }
 
+variable "task_port" {
+    type = string
+    default = "5000"
+}
+

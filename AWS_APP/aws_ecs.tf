@@ -18,8 +18,8 @@ resource "aws_ecs_task_definition" "test-ecs-task-definition" {
     "image": "${var.ecr_url}/${var.container_image_name}:latest",
     "portMappings": [
       {
-        "containerPort": 80,
-        "hostPort": 80
+        "containerPort": ${var.task_port},
+        "hostPort": ${var.task_port}
       }
     ]
   }
