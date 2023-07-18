@@ -12,3 +12,7 @@ resource "docker_image" "test_docker_image" {
 resource "docker_registry_image" "media-handler" {
   name = docker_image.test_docker_image.name
 }
+
+output "container_image_name" {
+  value = docker_registry_image.media.name
+}

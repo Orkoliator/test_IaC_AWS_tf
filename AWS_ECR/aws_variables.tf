@@ -5,7 +5,3 @@ variable "aws_region" {
 variable "ecr_name" {
     type = string
 }
-
-variable "ecs_name" {
-    type = string
-}
