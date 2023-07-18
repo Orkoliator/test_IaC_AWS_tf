@@ -15,7 +15,7 @@ resource "docker_image" "test_docker_image" {
   name = "${var.docker_image_name}-${var.docker_image_author}"
   build {
     context = "./repo/"
-    tag     = [ "${var.docker_image_name}-${var.docker_image_author}:latest", "${var.docker_image_tag}"]
+    tag     = [ "${var.ecr_url}/${docker_image.test_docker_image.name}:latest", "${var.docker_image_tag}"]
     label = {
       author : "${var.docker_image_author}"
     }
