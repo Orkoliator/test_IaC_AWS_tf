@@ -24,5 +24,12 @@ node {
                 sh "terraform plan -no-color"
             }
         }
+        stage('terraform apply') {
+            if (env.DOCKER_HOST) {
+                sh "terraform apply -no-color -var='docker_host=${DOCKER_HOST}'"
+            } else {
+                sh "terraform apply -no-color"
+            }
+        }
     }
 }
