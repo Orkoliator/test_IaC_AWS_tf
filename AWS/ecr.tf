@@ -12,9 +12,9 @@ output "ecr_url" {
 }
 
 output "ecr_username" {
-  value = aws_ecr_authorization_token.token.user_name
+  value = data.aws_ecr_authorization_token.token.user_name
 }
 
 output "ecr_password" {
-  value = aws_ecr_authorization_token.token.password
+  value = data.aws_ecr_authorization_token.token.password
 }
