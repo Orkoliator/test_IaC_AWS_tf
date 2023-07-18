@@ -12,7 +12,7 @@ module "docker_image" {
   docker_image_name = var.docker_image_name
   docker_image_author = var.docker_image_author
   docker_image_tag = var.docker_image_tag
-  ecr_url = "${module.aws_ecr.ecr_url}"
+  ecr_url = "${module.output.aws_ecr.ecr_url}"
   ecr_username = "${module.aws_ecr.ecr_username}"
   ecr_password = "${module.aws_ecr.ecr_password}"
 }
