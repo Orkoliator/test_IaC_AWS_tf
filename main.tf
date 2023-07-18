@@ -8,13 +8,14 @@ module "aws_ecr" {
 module "docker_image" {
   source = "./docker"
   docker_host = var.docker_host
-  docker_image_url = var.docker_image_url
   docker_image_name = var.docker_image_name
   docker_image_author = var.docker_image_author
   docker_image_tag = var.docker_image_tag
   ecr_url = "${module.aws_ecr.ecr_url}"
   ecr_username = "${module.aws_ecr.ecr_username}"
   ecr_password = "${module.aws_ecr.ecr_password}"
+  git_user = var.git_user
+  git_repo = var.git_repo
 }
 
 module "aws_application" {

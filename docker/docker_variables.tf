@@ -2,10 +2,6 @@ variable "docker_host" {
     type = string
 }
 
-variable "docker_image_url" {
-    type = string
-}
-
 variable "docker_image_name" {
     type = string
 }
@@ -29,3 +25,12 @@ variable "ecr_username" {
 variable "ecr_password" {
     type = string
 }
+
+variable "git_user" {
+    type = string
+}
+
+variable "git_repo" {
+    type = string
+}
+

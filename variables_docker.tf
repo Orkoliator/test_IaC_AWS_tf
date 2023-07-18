@@ -1,11 +1,6 @@
 variable "docker_host" {
     type = string
-    default = "tcp://host.docker.internal:2375/"
-}
-
-variable "docker_image_url" {
-    type = string
-    default = "https://github.com/bbachi/python-flask-restapi.git"
+    default = "tcp://localhost:2375/"
 }
 
 variable "docker_image_name" {
