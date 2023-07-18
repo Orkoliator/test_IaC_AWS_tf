@@ -8,7 +8,13 @@ variable "ecr_name" {
     default = "test_ecr_reg"  
 }
 
-variable "ecs_name" {
+variable "ecs_cluster_name" {
     type = string
-    default = "test_ecs_repo"
+    default = "test_ecs_cluster"
 }
+
+variable "ecs_service_name" {
+    type = string
+    default = "test_ecs_service"
+}
+

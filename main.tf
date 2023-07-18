@@ -21,6 +21,7 @@ module "aws_application" {
   source = "./AWS_APP"
   aws_region = var.aws_region
   ecs_cluster_name = var.ecs_cluster_name
+  ecs_service_name = var.ecs_service_name
   ecr_url = "${module.aws_ecr.ecr_url}"
   container_image_name = "${module.docker_image.container_image_name}"
 }
