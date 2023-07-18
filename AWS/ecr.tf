@@ -5,6 +5,16 @@ resource "aws_ecr_repository" "ecr_reg" {
 	  }
 }
 
+data "aws_ecr_authorization_token" "token" {}
+
 output "ecr_url" {
   value = aws_ecr_repository.ecr_reg.repository_url
+}
+
+output "ecr_username" {
+  value = aws_ecr_authorization_token.token.user_name
+}
+
+output "ecr_password" {
+  value = aws_ecr_authorization_token.token.password
 }

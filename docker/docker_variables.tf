@@ -21,3 +21,11 @@ variable "docker_image_tag" {
 variable "ecr_url" {
     type = string
 }
+
+variable "ecr_username" {
+    type = string
+}
+
+variable "ecr_password" {
+    type = string
+}

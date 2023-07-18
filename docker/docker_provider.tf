@@ -11,7 +11,7 @@ provider "docker" {
   host = var.docker_host
   registry_auth {
     address  = "${var.ecr_url}"
-    username = "someuser"
-    password = "somepass"
+    username = "${var.ecr_username}"
+    password = "${var.ecr_password}"
   }
 }
