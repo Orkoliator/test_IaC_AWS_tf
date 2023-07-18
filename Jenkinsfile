@@ -18,7 +18,11 @@ node {
             sh "terraform validate -no-color"
         }
         stage('test - terraform plan') {
-            sh "terraform plan -no-color -var='docker_host=${DOCKER_HOST}'"
+            if (env.DOCKER_HOST) {
+                sh "terraform plan -no-color -var='docker_host=${DOCKER_HOST}'"
+            } else {
+                sh "terraform plan -no-color"
+            }
         }
     }
 }
