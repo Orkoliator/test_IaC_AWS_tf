@@ -2,8 +2,6 @@ Hello,
 
 This is personal pet project with intention to get some hands-on experience of Jenkins, Terraform and AWS.
 
-Jenkins Dockerfile is presented in this repo.
-
 To make this pipeline work there are few points required:
 
 - Terraform should be installed on Jenkins node
