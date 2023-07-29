@@ -1,7 +1,11 @@
 properties(
     [
         parameters([
-                booleanParam('DESTROY'),
+                booleanParam(
+                    name: 'DESTROY',
+                    defaultValue: true,
+                    description: 'true to destroy staged infrastructure'
+                ),
         ])   
     ]
 )  
