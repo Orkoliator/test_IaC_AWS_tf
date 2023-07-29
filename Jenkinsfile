@@ -45,7 +45,8 @@ node {
         }
         stage('terraform apply') {
             if (env.DOCKER_HOST) {
-                sh "terraform apply -auto-approve -no-color -var='docker_host=${DOCKER_HOST}' -vvv"
+                sh "export TF_LOG=\"DEBUG\""
+                sh "terraform apply -auto-approve -no-color -var='docker_host=${DOCKER_HOST}'"
             } else {
                 sh "terraform apply -auto-approve -no-color"
             }
