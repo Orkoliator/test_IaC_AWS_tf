@@ -34,5 +34,5 @@ resource "docker_registry_image" "registry" {
 }
 
 output "container_image_name" {
-  value = docker_registry_image.registry.name
+  value = docker_registry_image.registry[*].name
 }
