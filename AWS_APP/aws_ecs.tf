@@ -11,6 +11,8 @@ resource "aws_ecs_service" "test-ecs-service-two" {
 
 resource "aws_ecs_task_definition" "test-ecs-task-definition" {
   family = "service"
+  memory             = 1024
+  cpu                = 512
   container_definitions    = <<EOF
 [
   {
