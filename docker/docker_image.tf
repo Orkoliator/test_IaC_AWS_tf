@@ -11,11 +11,15 @@ resource "null_resource" "git_pull" {
   depends_on = [ local_file.dir ]
 }
 
+locals {
+  taglist = [ "${var.ecr_url}:latest", "${var.ecr_url}:${var.docker_image_tag}" ]
+}
+
 resource "docker_image" "test_docker_image" {
   name = "${var.ecr_url}"
   build {
     context = "./repo/"
-    tag     = [ "${var.ecr_url}:latest", "${var.ecr_url}:${var.docker_image_tag}"]
+    tag     = local.taglist
     label = {
       author : "${var.docker_image_author}"
     }
@@ -24,8 +28,9 @@ resource "docker_image" "test_docker_image" {
 }
 
 resource "docker_registry_image" "registry" {
-  for_each = docker_image.test_docker_image.build["tag"] 
+  for_each = local.taglist
   name = each.value
+  depends_on = [ docker_image.test_docker_image ]
 }
 
 output "container_image_name" {
