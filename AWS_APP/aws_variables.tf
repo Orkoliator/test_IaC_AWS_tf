@@ -14,9 +14,9 @@ variable "ecs_service_name" {
     type = string
 }
 
-variable "container_image_name" {
-    type = string
-}
+#variable "container_image_name" {
+#    type = string
+#}
 
 variable "task_port" {
     type = string
