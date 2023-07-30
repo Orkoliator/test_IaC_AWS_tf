@@ -24,7 +24,8 @@ resource "docker_image" "test_docker_image" {
 }
 
 resource "docker_registry_image" "registry" {
-  name = docker_image.test_docker_image.name
+  for_each = docker_image.test_docker_image.tag 
+  name = each.value
 }
 
 output "container_image_name" {
