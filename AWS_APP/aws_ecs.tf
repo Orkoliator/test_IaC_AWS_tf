@@ -11,6 +11,8 @@ resource "aws_ecs_service" "test-ecs-service-two" {
 
 resource "aws_ecs_task_definition" "test-ecs-task-definition" {
   family = "service"
+  requires_compatibilities = ["FARGATE"]
+  network_mode             = "awsvpc"
   memory             = 1024
   cpu                = 512
   container_definitions    = <<EOF
@@ -27,4 +29,8 @@ resource "aws_ecs_task_definition" "test-ecs-task-definition" {
   }
 ]
 EOF
+runtime_platform {
+    operating_system_family = "LINUX"
+    cpu_architecture        = "X86_64"
+  }
 }
