@@ -3,10 +3,10 @@ variable "aws_region" {
     default = "eu-central-1"  
 }
 
-variable "ecr_name" {
-    type = string
-    default = "test_ecr_reg"  
-}
+#variable "ecr_name" {
+#    type = string
+#    default = "test_ecr_reg"  
+#}
 
 variable "ecr_untagged_images_count" {
     type = string

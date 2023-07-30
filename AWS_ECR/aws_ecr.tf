@@ -1,6 +1,6 @@
 resource "aws_ecr_repository" "ecr_reg" {
-  name = "${var.ecr_name}-${var.aws_region}"
-#  name = "${var.docker_image_name}-${var.docker_image_author}"
+#  name = "${var.ecr_name}-${var.aws_region}"
+  name = "${var.docker_image_name}-${var.docker_image_author}"
   image_scanning_configuration {
 	    scan_on_push = true
 	  }
