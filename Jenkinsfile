@@ -36,24 +36,25 @@ node {
         stage('test - terraform syntax check') {
             sh "terraform validate -no-color"
         }
-        stage('test - terraform plan') {
-            if (env.DOCKER_HOST) {
-                sh "terraform plan -no-color -var='docker_host=${DOCKER_HOST}'"
-            } else {
-                sh "terraform plan -no-color"
-            }
-        }
-        stage('terraform apply') {
-            if (env.DOCKER_HOST) {
-                sh "terraform apply -auto-approve -no-color -var='docker_host=${DOCKER_HOST}'"
-            } else {
-                sh "terraform apply -auto-approve -no-color"
-            }
-        }
         if (params.DESTROY) {
             stage('terraform destroy') {
                 sh "terraform destroy -auto-approve -no-color"
             }
+        } else {
+            stage('test - terraform plan') {
+                if (env.DOCKER_HOST) {
+                    sh "terraform plan -no-color -var='docker_host=${DOCKER_HOST}'"
+                } else {
+                    sh "terraform plan -no-color"
+                }
+            }
+            stage('terraform apply') {
+                if (env.DOCKER_HOST) {
+                    sh "terraform apply -auto-approve -no-color -var='docker_host=${DOCKER_HOST}'"
+                } else {
+                    sh "terraform apply -auto-approve -no-color"
+                }
+            }            
         }
     }
 }
