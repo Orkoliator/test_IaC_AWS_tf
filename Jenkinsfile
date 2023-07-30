@@ -38,7 +38,7 @@ node {
         }
         if (params.DESTROY) {
             stage('terraform destroy') {
-                sh "terraform destroy -auto-approve -no-color"
+                sh "terraform destroy -auto-approve -no-color -var='docker_host=${DOCKER_HOST}'"
             }
         } else {
             stage('test - terraform plan') {
