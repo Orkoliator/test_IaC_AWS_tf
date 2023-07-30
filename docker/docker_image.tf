@@ -24,7 +24,7 @@ resource "docker_image" "test_docker_image" {
 }
 
 resource "docker_registry_image" "registry" {
-  name = "${var.ecr_url}:latest"
+  name = "${var.ecr_url}"
 }
 
 output "container_image_name" {
