@@ -10,7 +10,7 @@ terraform {
 provider "docker" {
   host = var.docker_host
   registry_auth {
-    address  = "${var.ecr_url}"
+    address  = "${var.ecr_proxy_endpoint}"
     username = "${var.ecr_username}"
     password = "${var.ecr_password}"
   }

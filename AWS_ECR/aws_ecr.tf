@@ -56,6 +56,10 @@ resource "aws_ecr_lifecycle_policy" "default_policy" {
 
 data "aws_ecr_authorization_token" "token" {}
 
+output "ecr_proxy_endpoint" {
+  value = data.aws_ecr_authorization_token.token.proxy_endpoint
+}
+
 output "ecr_url" {
   value = aws_ecr_repository.ecr_reg.repository_url
 }
