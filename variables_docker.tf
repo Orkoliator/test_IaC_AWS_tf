@@ -15,6 +15,6 @@ variable "docker_image_author" {
 
 variable "docker_image_tag" {
     type = string
-    default = "api:latest"
+    default = "apiv1"
 }
 
