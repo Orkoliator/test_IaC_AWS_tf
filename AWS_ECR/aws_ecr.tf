@@ -3,6 +3,7 @@ resource "aws_ecr_repository" "ecr_reg" {
   image_scanning_configuration {
 	    scan_on_push = true
 	  }
+  force_destroy = true
 }
 
 resource "aws_ecr_repository_policy" "demo-repo-policy" {
