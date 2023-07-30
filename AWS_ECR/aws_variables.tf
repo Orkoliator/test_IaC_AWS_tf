@@ -2,10 +2,6 @@ variable "aws_region" {
     type = string
 }
 
-#variable "ecr_name" {
-#    type = string
-#}
-
 variable "ecr_untagged_images_count" {
     type = string
 }

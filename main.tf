@@ -2,7 +2,6 @@
 module "aws_ecr" {
   source = "./AWS_ECR"
   aws_region = var.aws_region
-#  ecr_name = var.ecr_name
   ecr_untagged_images_count = var.ecr_untagged_images_count
   docker_image_name = var.docker_image_name
   docker_image_author = var.docker_image_author
