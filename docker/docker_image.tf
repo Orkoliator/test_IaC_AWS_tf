@@ -12,7 +12,7 @@ resource "null_resource" "git_pull" {
 }
 
 resource "docker_image" "test_docker_image" {
-  name = "${var.docker_image_name}-${var.docker_image_author}"
+  name = "${var.ecr_url}/${var.docker_image_name}-${var.docker_image_author}"
   build {
     context = "./repo/"
     tag     = [ "${var.ecr_url}/${var.docker_image_name}-${var.docker_image_author}:latest", "${var.docker_image_tag}"]
