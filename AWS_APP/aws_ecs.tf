@@ -15,7 +15,7 @@ resource "aws_ecs_task_definition" "test-ecs-task-definition" {
 [
   {
     "name": "${var.ecs_service_name}-${var.aws_region}-app",
-    "image": "${var.ecr_url}/${var.container_image_name}:latest",
+    "image": "${var.ecr_url}:latest",
     "portMappings": [
       {
         "containerPort": ${var.task_port},
