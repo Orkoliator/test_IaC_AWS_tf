@@ -24,7 +24,7 @@ resource "docker_image" "test_docker_image" {
 }
 
 resource "docker_registry_image" "registry" {
-  for_each = docker_image.test_docker_image.tag 
+  for_each = docker_image.test_docker_image.build.tag 
   name = each.value
 }
 
