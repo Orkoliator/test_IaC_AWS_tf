@@ -9,8 +9,15 @@ resource "aws_ecs_service" "test-ecs-service" {
   desired_count = 1
 }
 
-data "aws_iam_role" "ecs_task_execution_role" {
+resource "aws_iam_role" "ecs_task_execution_role" {
   name = "ecsTaskExecutionRole"
+  statement {
+    actions = ["sts:AssumeRole"]
+    principals {
+      type        = "Service"
+      identifiers = ["ecs-tasks.amazonaws.com"]
+    }
+  }
 }
 
 resource "aws_iam_role" "test-iam-role" {
@@ -43,7 +50,7 @@ resource "aws_ecs_task_definition" "test-ecs-task-definition" {
   memory             = 1024
   cpu                = 512
   task_role_arn            = "${aws_iam_role.test-iam-role.arn}"
-  execution_role_arn       = "${data.aws_iam_role.ecs_task_execution_role.arn}"
+  execution_role_arn       = "${resource.aws_iam_role.ecs_task_execution_role.arn}"
   container_definitions    = <<EOF
 [
   {
