@@ -20,7 +20,6 @@ data "aws_iam_policy_document" "ecs_tasks_execution_role" {
   }
 }
 
-
 resource "aws_iam_role" "ecs_task_execution_role" {
   name = "ecsTaskExecutionRole"
   assume_role_policy = "${data.aws_iam_policy_document.ecs_tasks_execution_role.json}"
@@ -62,7 +61,6 @@ resource "aws_ecs_task_definition" "test-ecs-task-definition" {
   {
     "name": "${var.ecs_service_name}-${var.aws_region}-app",
     "image": "${var.ecr_url}:latest",
-    "networkMode": "awsvpc",
     "portMappings": [
       {
         "containerPort": ${var.task_port},
