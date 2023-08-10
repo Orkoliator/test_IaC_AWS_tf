@@ -9,6 +9,10 @@ resource "aws_ecs_service" "test-ecs-service" {
   desired_count = 1
 }
 
+data "aws_iam_role" "ecs_task_execution_role" {
+  name = "ecsTaskExecutionRole"
+}
+
 resource "aws_iam_role" "test-iam-role" {
   name = "${var.ecs_service_name}-${var.aws_region}-iam"
   assume_role_policy = <<EOF
