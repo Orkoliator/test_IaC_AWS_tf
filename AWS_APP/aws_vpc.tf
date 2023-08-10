@@ -47,7 +47,7 @@ resource "aws_route_table_association" "private_subnet" {
 }
 
 resource "aws_eip" "nat" {
-  vpc = true
+  domain = "vpc"
 }
 
 resource "aws_internet_gateway" "igw" {
@@ -55,7 +55,7 @@ resource "aws_internet_gateway" "igw" {
 }
 
 resource "aws_nat_gateway" "ngw" {
-  subnet_id     = aws_subnet.public_d.id
+  subnet_id     = aws_subnet.public.id
   allocation_id = aws_eip.nat.id
 
   depends_on = [aws_internet_gateway.igw]
