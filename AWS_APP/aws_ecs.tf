@@ -6,6 +6,7 @@ resource "aws_ecs_service" "test-ecs-service" {
   name = "${var.ecs_service_name}-${var.aws_region}-app"
   cluster = aws_ecs_cluster.test-ecs-cluster.id
   task_definition = aws_ecs_task_definition.test-ecs-task-definition.arn
+  launch_type     = "FARGATE"
   desired_count = 1
 }
 
