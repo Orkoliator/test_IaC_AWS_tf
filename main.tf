@@ -27,6 +27,8 @@ module "aws_application" {
   ecs_cluster_name = var.ecs_cluster_name
   ecs_service_name = var.ecs_service_name
   ecr_url = "${module.aws_ecr.ecr_url}"
-#  container_image_name = "${module.docker_image.container_image_name}"
   task_port = var.task_port
+  vpc_cidr_block = var.vpc_cidr_block
+  subnet_public_cidr_block = var.subnet_public_cidr_block
+  subnet_private_cidr_block = var.subnet_private_cidr_block
 }

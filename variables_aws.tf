@@ -23,3 +23,17 @@ variable "task_port" {
     default = "5000"
 }
 
+variable "vpc_cidr_block" {
+    type = string
+    default = "192.168.0.0/16"
+}
+
+variable "subnet_public_cidr_block" {
+    type = string
+    default = "192.168.1.0/24"
+}
+
+variable "subnet_private_cidr_block" {
+    type = string
+    default = "192.168.2.0/24"
+}

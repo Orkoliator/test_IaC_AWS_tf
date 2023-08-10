@@ -14,10 +14,18 @@ variable "ecs_service_name" {
     type = string
 }
 
-#variable "container_image_name" {
-#    type = string
-#}
-
 variable "task_port" {
+    type = string
+}
+
+variable "vpc_cidr_block" {
+    type = string
+}
+
+variable "subnet_public_cidr_block" {
+    type = string
+}
+
+variable "subnet_private_cidr_block" {
     type = string
 }

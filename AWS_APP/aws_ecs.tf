@@ -6,7 +6,20 @@ resource "aws_ecs_service" "test-ecs-service" {
   name = "${var.ecs_service_name}-${var.aws_region}-app"
   cluster = aws_ecs_cluster.test-ecs-cluster.id
   task_definition = aws_ecs_task_definition.test-ecs-task-definition.arn
-  launch_type     = "FARGATE"
+
+  network_configuration {
+    assign_public_ip = false
+
+    security_groups = [
+      aws_security_group.egress_all.id,
+      aws_security_group.ingress_api.id,
+    ]
+
+    subnets = [
+      aws_subnet.private.id,
+    ]
+  }
+
   desired_count = 1
 }
 
