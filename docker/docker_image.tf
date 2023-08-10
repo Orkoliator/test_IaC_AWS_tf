@@ -27,14 +27,9 @@ resource "docker_image" "test_docker_image" {
   depends_on = [ null_resource.git_pull ]
 }
 
-# resource "docker_registry_image" "registry" {
-#   for_each = toset(local.taglist)
-#   name = each.value
-#   depends_on = [ docker_image.test_docker_image ]
-# }
-
 resource "docker_registry_image" "registry" {
-  name = [ for tag in local.taglist ]
+  for_each = toset(local.taglist)
+  name = each.value
   depends_on = [ docker_image.test_docker_image ]
 }
 
