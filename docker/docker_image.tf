@@ -28,7 +28,7 @@ resource "docker_image" "test_docker_image" {
 }
 
 resource "docker_registry_image" "registry" {
-  count = length(toset(local.taglist))
+  count = length(local.taglist)
   name = local.taglist[count.index]
   depends_on = [ docker_image.test_docker_image ]
 }
