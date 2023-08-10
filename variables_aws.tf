@@ -23,6 +23,11 @@ variable "task_port" {
     default = "5000"
 }
 
+variable "aws_availability_zone" {
+    type = string
+    default = "eu-central-1a"  
+}
+
 variable "vpc_cidr_block" {
     type = string
     default = "192.168.0.0/16"

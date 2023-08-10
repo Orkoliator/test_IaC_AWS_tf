@@ -1,38 +1,38 @@
 resource "aws_vpc" "app_vpc" {
-  cidr_block = var.vpc_cidr_block #"10.0.0.0/16"
+  cidr_block = var.vpc_cidr_block
 }
 
 resource "aws_subnet" "public" {
   vpc_id            = aws_vpc.app_vpc.id
-  cidr_block        = var.subnet_public_cidr_block #"10.0.1.0/25"
-  availability_zone = var.aws_region
+  cidr_block        = var.subnet_public_cidr_block
+  availability_zone = var.aws_availability_zone
 
   tags = {
-    "Name" = "public | ${var.aws_region}"
+    "Name" = "public | ${var.aws_availability_zone}"
   }
 }
 
 resource "aws_subnet" "private" {
   vpc_id            = aws_vpc.app_vpc.id
-  cidr_block        = var.subnet_private_cidr_block #"10.0.2.0/25"
-  availability_zone = var.aws_region
+  cidr_block        = var.subnet_private_cidr_block
+  availability_zone = var.aws_availability_zone
 
   tags = {
-    "Name" = "private | ${var.aws_region}"
+    "Name" = "private | ${var.aws_availability_zone}"
   }
 }
 
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.app_vpc.id
   tags = {
-    "Name" = "${var.aws_region}-public"
+    "Name" = "${var.aws_availability_zone}-public"
   }
 }
 
 resource "aws_route_table" "private" {
   vpc_id = aws_vpc.app_vpc.id
   tags = {
-    "Name" = "${var.aws_region}-private"
+    "Name" = "${var.aws_availability_zone}-private"
   }
 }
 

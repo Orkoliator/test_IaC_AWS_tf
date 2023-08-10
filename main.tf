@@ -28,6 +28,7 @@ module "aws_application" {
   ecs_service_name = var.ecs_service_name
   ecr_url = "${module.aws_ecr.ecr_url}"
   task_port = var.task_port
+  aws_availability_zone = var.aws_availability_zone
   vpc_cidr_block = var.vpc_cidr_block
   subnet_public_cidr_block = var.subnet_public_cidr_block
   subnet_private_cidr_block = var.subnet_private_cidr_block

@@ -18,6 +18,10 @@ variable "task_port" {
     type = string
 }
 
+variable "aws_availability_zone" {
+    type = string
+}
+
 variable "vpc_cidr_block" {
     type = string
 }
