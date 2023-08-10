@@ -28,8 +28,8 @@ resource "docker_image" "test_docker_image" {
 }
 
 resource "docker_registry_image" "registry" {
-  for_each = toset(local.taglist)
-  name = each.value
+  count = length(toset(local.taglist))
+  name = local.taglist[count.index]
   depends_on = [ docker_image.test_docker_image ]
 }
 
