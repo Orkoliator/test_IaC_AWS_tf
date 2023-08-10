@@ -33,6 +33,3 @@ resource "docker_registry_image" "registry" {
   depends_on = [ docker_image.test_docker_image ]
 }
 
-#output "container_image_name" {
-#  value = docker_registry_image.registry[*].name
-#}
