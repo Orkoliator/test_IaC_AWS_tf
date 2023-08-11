@@ -50,6 +50,7 @@ resource "aws_iam_role" "test-iam-role" {
             "Principal": {
             "Service": [
                 "s3.amazonaws.com",
+                "ecr.amazonaws.com",
                 "lambda.amazonaws.com",
                 "ecs.amazonaws.com"
             ]
