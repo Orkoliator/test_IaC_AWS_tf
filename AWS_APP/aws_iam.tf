@@ -59,7 +59,7 @@ resource "aws_iam_role_policy_attachment" "test_ecs_task_execution_role" {
   policy_arn = data.aws_iam_policy.test_ecs_task_execution_role.arn
 }
 
-resource "aws_iam_role_policy_attachment" "test_ecs_task_execution_role" {
+resource "aws_iam_role_policy_attachment" "test_ecr_read_role" {
   role       = aws_iam_role.test_ecs_task_execution_role.name
   policy_arn = data.aws_iam_policy.test_ecr_read_role.arn
 }
