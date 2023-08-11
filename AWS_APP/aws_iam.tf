@@ -51,7 +51,7 @@ data "aws_iam_policy" "test_ecs_task_execution_role" {
 }
 
 data "aws_iam_policy" "test_ecr_read_role" {
-  arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerRegistryReadOnly"
+  arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
 }
 
 resource "aws_iam_role_policy_attachment" "test_ecs_task_execution_role" {
