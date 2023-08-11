@@ -1,11 +1,11 @@
-resource "aws_ecs_cluster" "test-ecs-cluster" {
+resource "aws_ecs_cluster" "test_ecs_cluster" {
   name = "${var.ecs_cluster_name}-${var.aws_region}"
 }
 
-resource "aws_ecs_service" "test-ecs-service" {
+resource "aws_ecs_service" "test_ecs_service" {
   name = "${var.ecs_service_name}-${var.aws_region}-app"
-  cluster = aws_ecs_cluster.test-ecs-cluster.id
-  task_definition = aws_ecs_task_definition.test-ecs-task-definition.arn
+  cluster = aws_ecs_cluster.test_ecs_cluster.id
+  task_definition = aws_ecs_task_definition.test_ecs_task_definition.arn
   launch_type = "FARGATE"
   force_new_deployment = true
 
@@ -25,7 +25,7 @@ resource "aws_ecs_service" "test-ecs-service" {
   desired_count = 1
 }
 
-data "aws_iam_policy_document" "ecs_tasks_execution_role" {
+data "aws_iam_policy_document" "test_ecs_tasks_execution_role" {
   statement {
     actions = ["sts:AssumeRole"]
 
@@ -36,12 +36,12 @@ data "aws_iam_policy_document" "ecs_tasks_execution_role" {
   }
 }
 
-resource "aws_iam_role" "ecs_task_execution_role" {
-  name = "ecsTaskExecutionRole"
-  assume_role_policy = "${data.aws_iam_policy_document.ecs_tasks_execution_role.json}"
+resource "aws_iam_role" "test_ecs_task_execution_role" {
+  name = "ecs-task-execution-role"
+  assume_role_policy = "${data.aws_iam_policy_document.test_ecs_tasks_execution_role.json}"
 }
 
-resource "aws_iam_role" "test-iam-role" {
+resource "aws_iam_role" "test_iam_role" {
   name = "${var.ecs_service_name}-${var.aws_region}-iam"
   assume_role_policy = <<EOF
 {
@@ -67,28 +67,29 @@ resource "aws_iam_role" "test-iam-role" {
                 "Service": "ecs-tasks.amazonaws.com"
             },
             "Action": "sts:AssumeRole"
-        },
-        {
-            "Sid": "",
-            "Effect": "Allow",
-            "Principal": {
-                "Service": "ecs-tasks.amazonaws.com"
-            },
-            "Action": "sts:AssumeRole"
         }
     ]
 }
 EOF
 }
 
-resource "aws_ecs_task_definition" "test-ecs-task-definition" {
+data "aws_iam_policy" "test_ecs_task_execution_role" {
+  arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+}
+
+resource "aws_iam_role_policy_attachment" "test_ecs_task_execution_role" {
+  role       = aws_iam_role.test_ecs_task_execution_role.name
+  policy_arn = data.aws_iam_policy.test_ecs_task_execution_role.arn
+}
+
+resource "aws_ecs_task_definition" "test_ecs_task_definition" {
   family = "service"
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
   memory             = 1024
   cpu                = 512
-  task_role_arn            = "${aws_iam_role.test-iam-role.arn}"
-  execution_role_arn       = "${resource.aws_iam_role.ecs_task_execution_role.arn}"
+  task_role_arn            = "${aws_iam_role.test_iam_role.arn}"
+  execution_role_arn       = "${resource.aws_iam_role.test_ecs_task_execution_role.arn}"
   container_definitions    = <<EOF
 [
   {
