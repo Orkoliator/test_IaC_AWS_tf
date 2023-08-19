@@ -1,5 +1,5 @@
 resource "aws_lb_target_group" "test_api" {
-  name        = "${var.ecs_service_name}-${var.aws_region}-api"
+  name        = "${var.ecs_service_name}-api"
   port        = var.task_port
   protocol    = "HTTP"
   target_type = "ip"
@@ -14,7 +14,7 @@ resource "aws_lb_target_group" "test_api" {
 }
 
 resource "aws_alb" "test_lb" {
-  name               = "${var.ecs_service_name}-api-lb"
+  name               = "test-api-lb" # no var because underlines are not supported
   internal           = false
   load_balancer_type = "application"
 
