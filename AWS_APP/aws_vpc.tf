@@ -109,7 +109,7 @@ resource "aws_security_group" "task_group" {
   vpc_id      = aws_vpc.app_vpc.id
 }
 
-resource "aws_security_group_rule" "ingress_http" {
+resource "aws_security_group_rule" "task_ingress_http" {
   type              = "ingress"
   from_port         = var.task_port
   to_port           = var.task_port
@@ -118,7 +118,7 @@ resource "aws_security_group_rule" "ingress_http" {
   security_group_id = aws_security_group.task_group.id
 }
 
-resource "aws_security_group_rule" "egress_all" {
+resource "aws_security_group_rule" "task_egress_all" {
   type              = "egress"
   from_port         = 0
   to_port           = 0
