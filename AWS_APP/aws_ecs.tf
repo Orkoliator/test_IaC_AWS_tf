@@ -10,7 +10,7 @@ resource "aws_ecs_service" "test_ecs_service" {
   force_new_deployment = true
 
   network_configuration {
-    assign_public_ip = false
+    assign_public_ip = true
 
     security_groups = [
       aws_security_group.egress_all.id,
@@ -20,8 +20,6 @@ resource "aws_ecs_service" "test_ecs_service" {
     subnets = [
       aws_subnet.private.id,
     ]
-
-    assign_public_ip = true
   }
 
   desired_count = 1
