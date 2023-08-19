@@ -1,5 +1,5 @@
 resource "aws_lb_target_group" "test_api" {
-  name        = "${var.ecs_service_name}-api"
+  name        = "test-api" # no var because underlines are not supported
   port        = var.task_port
   protocol    = "HTTP"
   target_type = "ip"
