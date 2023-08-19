@@ -45,14 +45,14 @@ resource "aws_subnet" "private_b" {
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.app_vpc.id
   tags = {
-    "Name" = "${var.aws_availability_zone}-public"
+    "Name" = "route-table-public"
   }
 }
 
 resource "aws_route_table" "private" {
   vpc_id = aws_vpc.app_vpc.id
   tags = {
-    "Name" = "${var.aws_availability_zone}-private"
+    "Name" = "route-table-private"
   }
 }
 
