@@ -10,7 +10,7 @@ resource "aws_ecs_service" "test_ecs_service" {
   force_new_deployment = true
 
   network_configuration {
-    assign_public_ip = true
+    assign_public_ip = false
 
     security_groups = [
       aws_security_group.task_group.id,
@@ -23,6 +23,13 @@ resource "aws_ecs_service" "test_ecs_service" {
   }
 
   desired_count = 1
+
+    load_balancer {
+    target_group_arn = aws_lb_target_group.test_api.arn
+    container_name   = "${var.ecs_service_name}-${var.aws_region}-app"
+    container_port   = 5000
+  }
+
 }
 
 resource "aws_ecs_task_definition" "test_ecs_task_definition" {
