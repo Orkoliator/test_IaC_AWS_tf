@@ -37,7 +37,7 @@ resource "aws_alb_listener" "test_api_http" {
 
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.test_lb.arn
+    target_group_arn = aws_lb_target_group.test_api.arn
   }
 }
 
