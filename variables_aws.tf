@@ -23,9 +23,14 @@ variable "task_port" {
     default = "5000"
 }
 
-variable "aws_availability_zone" {
+variable "aws_availability_zone_a" {
     type = string
-    default = "eu-central-1a"  
+    default = "eu-central-1a"
+}
+
+variable "aws_availability_zone_b" {
+    type = string
+    default = "eu-central-1c"
 }
 
 variable "vpc_cidr_block" {
@@ -33,12 +38,22 @@ variable "vpc_cidr_block" {
     default = "192.168.0.0/16"
 }
 
-variable "subnet_public_cidr_block" {
+variable "subnet_public_a_cidr_block" {
     type = string
-    default = "192.168.1.0/24"
+    default = "192.168.1.0/25"
 }
 
-variable "subnet_private_cidr_block" {
+variable "subnet_public_b_cidr_block" {
     type = string
-    default = "192.168.2.0/24"
+    default = "192.168.1.128/25"
+}
+
+variable "subnet_private_a_cidr_block" {
+    type = string
+    default = "192.168.2.0/25"
+}
+
+variable "subnet_private_b_cidr_block" {
+    type = string
+    default = "192.168.2.128/25"
 }

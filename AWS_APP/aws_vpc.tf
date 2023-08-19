@@ -2,23 +2,43 @@ resource "aws_vpc" "app_vpc" {
   cidr_block = var.vpc_cidr_block
 }
 
-resource "aws_subnet" "public" {
+resource "aws_subnet" "public_a" {
   vpc_id            = aws_vpc.app_vpc.id
-  cidr_block        = var.subnet_public_cidr_block
-  availability_zone = var.aws_availability_zone
+  cidr_block        = var.subnet_public_a_cidr_block
+  availability_zone = var.aws_availability_zone_a
 
   tags = {
-    "Name" = "public | ${var.aws_availability_zone}"
+    "Name" = "public | ${var.aws_availability_zone_a}"
   }
 }
 
-resource "aws_subnet" "private" {
+resource "aws_subnet" "public_b" {
   vpc_id            = aws_vpc.app_vpc.id
-  cidr_block        = var.subnet_private_cidr_block
-  availability_zone = var.aws_availability_zone
+  cidr_block        = var.subnet_public_b_cidr_block
+  availability_zone = var.aws_availability_zone_b
 
   tags = {
-    "Name" = "private | ${var.aws_availability_zone}"
+    "Name" = "public | ${var.aws_availability_zone_b}"
+  }
+}
+
+resource "aws_subnet" "private_a" {
+  vpc_id            = aws_vpc.app_vpc.id
+  cidr_block        = var.subnet_private_a_cidr_block
+  availability_zone = var.aws_availability_zone_a
+
+  tags = {
+    "Name" = "private | ${var.aws_availability_zone_a}"
+  }
+}
+
+resource "aws_subnet" "private_b" {
+  vpc_id            = aws_vpc.app_vpc.id
+  cidr_block        = var.subnet_private_b_cidr_block
+  availability_zone = var.aws_availability_zone_b
+
+  tags = {
+    "Name" = "private | ${var.aws_availability_zone_b}"
   }
 }
 
@@ -36,13 +56,23 @@ resource "aws_route_table" "private" {
   }
 }
 
-resource "aws_route_table_association" "public_subnet" {
-  subnet_id      = aws_subnet.public.id
+resource "aws_route_table_association" "public_a_subnet" {
+  subnet_id      = aws_subnet.public_a.id
   route_table_id = aws_route_table.public.id
 }
 
-resource "aws_route_table_association" "private_subnet" {
-  subnet_id      = aws_subnet.private.id
+resource "aws_route_table_association" "public_b_subnet" {
+  subnet_id      = aws_subnet.public_b.id
+  route_table_id = aws_route_table.public.id
+}
+
+resource "aws_route_table_association" "private_a_subnet" {
+  subnet_id      = aws_subnet.private_a.id
+  route_table_id = aws_route_table.private.id
+}
+
+resource "aws_route_table_association" "private_b_subnet" {
+  subnet_id      = aws_subnet.private_b.id
   route_table_id = aws_route_table.private.id
 }
 
@@ -55,7 +85,7 @@ resource "aws_internet_gateway" "igw" {
 }
 
 resource "aws_nat_gateway" "ngw" {
-  subnet_id     = aws_subnet.public.id
+  subnet_id     = aws_subnet.public_a.id
   allocation_id = aws_eip.nat.id
 
   depends_on = [aws_internet_gateway.igw]
