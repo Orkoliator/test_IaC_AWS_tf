@@ -7,7 +7,7 @@ resource "aws_lb_target_group" "test_api" {
 
   health_check {
     enabled = true
-    path    = "/health"
+    path    = "/"
   }
 
   depends_on = [aws_alb.test_lb]
