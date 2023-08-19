@@ -24,7 +24,7 @@ resource "aws_alb" "test_lb" {
   ]
 
   security_groups = [
-    aws_security_group.egress_all.id,
+    aws_security_group.lb_group.id,
   ]
 
   depends_on = [aws_internet_gateway.igw]
@@ -43,4 +43,29 @@ resource "aws_alb_listener" "test_api_http" {
 
 output "alb_url" {
   value = "http://${aws_alb.test_lb.dns_name}"
+}
+
+
+resource "aws_security_group" "lb_group" {
+  name        = "egress-all"
+  description = "Allow all outbound traffic"
+  vpc_id      = aws_vpc.app_vpc.id
+}
+
+resource "aws_security_group_rule" "ingress_http" {
+  type              = "ingress"
+  from_port         = 80
+  to_port           = 80
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.lb_group.id
+}
+
+resource "aws_security_group_rule" "egress_all" {
+  type              = "egress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.lb_group.id
 }

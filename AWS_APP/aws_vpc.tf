@@ -103,29 +103,26 @@ resource "aws_route" "private_ngw" {
   nat_gateway_id         = aws_nat_gateway.ngw.id
 }
 
-
-resource "aws_security_group" "egress_all" {
-  name        = "egress-all"
-  description = "Allow all outbound traffic"
-  vpc_id      = aws_vpc.app_vpc.id
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-
-resource "aws_security_group" "ingress_api" {
+resource "aws_security_group" "task_group" {
   name        = "ingress-${var.ecs_service_name}-${var.aws_region}"
   description = "Allow ingress to API"
   vpc_id      = aws_vpc.app_vpc.id
+}
 
-  ingress {
-    from_port   = var.task_port
-    to_port     = var.task_port
-    protocol    = "TCP"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+resource "aws_security_group_rule" "ingress_http" {
+  type              = "ingress"
+  from_port         = var.task_port
+  to_port           = var.task_port
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.task_group.id
+}
+
+resource "aws_security_group_rule" "egress_all" {
+  type              = "egress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.task_group.id
 }

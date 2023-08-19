@@ -1,5 +1,6 @@
 
 module "aws_ecr" {
+
   source = "./AWS_ECR"
   aws_region = var.aws_region
   ecr_untagged_images_count = var.ecr_untagged_images_count
@@ -19,6 +20,7 @@ module "docker_image" {
   ecr_password = "${module.aws_ecr.ecr_password}"
   git_user = var.git_user
   git_repo = var.git_repo
+
 }
 
 module "aws_application" {
@@ -36,5 +38,4 @@ module "aws_application" {
   subnet_private_a_cidr_block = var.subnet_private_a_cidr_block
   subnet_private_b_cidr_block = var.subnet_private_b_cidr_block
 
-  depends_on = [ module.docker_image ]
 }

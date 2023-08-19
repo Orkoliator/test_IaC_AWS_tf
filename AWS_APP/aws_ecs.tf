@@ -13,8 +13,7 @@ resource "aws_ecs_service" "test_ecs_service" {
     assign_public_ip = true
 
     security_groups = [
-      aws_security_group.egress_all.id,
-      aws_security_group.ingress_api.id,
+      aws_security_group.task_group.id,
     ]
 
     subnets = [
