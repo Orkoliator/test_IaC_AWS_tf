@@ -32,4 +32,3 @@ resource "docker_registry_image" "registry" {
   name = local.taglist[count.index]
   depends_on = [ docker_image.test_docker_image ]
 }
-

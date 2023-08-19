@@ -35,4 +35,6 @@ module "aws_application" {
   subnet_public_b_cidr_block = var.subnet_public_b_cidr_block
   subnet_private_a_cidr_block = var.subnet_private_a_cidr_block
   subnet_private_b_cidr_block = var.subnet_private_b_cidr_block
+
+  depends_on = [ module.docker_image ]
 }
