@@ -18,8 +18,7 @@ resource "aws_ecs_service" "test_ecs_service" {
     ]
 
     subnets = [
-#      aws_subnet.private.id,
-      aws_subnet.public.id,
+      aws_subnet.private.id,
     ]
   }
 
