@@ -14,7 +14,7 @@ resource "aws_lb_target_group" "test_api" {
 }
 
 resource "aws_alb" "test_lb" {
-  name               = "${var.ecs_service_name}-${var.aws_region}-api-lb"
+  name               = "${var.ecs_service_name}-api-lb"
   internal           = false
   load_balancer_type = "application"
 
