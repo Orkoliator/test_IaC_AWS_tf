@@ -18,7 +18,11 @@ variable "task_port" {
     type = string
 }
 
-variable "aws_availability_zone" {
+variable "aws_availability_zone_a" {
+    type = string
+}
+
+variable "aws_availability_zone_b" {
     type = string
 }
 
@@ -26,10 +30,18 @@ variable "vpc_cidr_block" {
     type = string
 }
 
-variable "subnet_public_cidr_block" {
+variable "subnet_public_a_cidr_block" {
     type = string
 }
 
-variable "subnet_private_cidr_block" {
+variable "subnet_public_b_cidr_block" {
+    type = string
+}
+
+variable "subnet_private_a_cidr_block" {
+    type = string
+}
+
+variable "subnet_private_b_cidr_block" {
     type = string
 }
