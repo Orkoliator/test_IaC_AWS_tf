@@ -10,7 +10,7 @@ variable "lambda_name" {
 
 variable "stage_name" {
     type = string
-    default = "test"
+    default = "v1"
 }
 
 variable "url" {
