@@ -41,4 +41,6 @@ module "aws_lambda_application" {
   source = "./AWS_lambda_app"
   aws_lambda_region = var.aws_lambda_region
   lambda_name = var.lambda_name
+  stage_name = var.stage_name
+  url = var.url
 }

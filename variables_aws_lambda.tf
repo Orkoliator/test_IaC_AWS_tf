@@ -8,3 +8,13 @@ variable "lambda_name" {
     default = "test"
 }
 
+variable "stage_name" {
+    type = string
+    default = "test"
+}
+
+variable "url" {
+    type = string
+    default = "test"
+}
+
