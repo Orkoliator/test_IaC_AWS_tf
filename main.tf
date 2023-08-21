@@ -1,6 +1,5 @@
 
 module "aws_ecr" {
-
   source = "./AWS_ECR"
   aws_region = var.aws_region
   ecr_untagged_images_count = var.ecr_untagged_images_count
@@ -20,11 +19,10 @@ module "docker_image" {
   ecr_password = "${module.aws_ecr.ecr_password}"
   git_user = var.git_user
   git_repo = var.git_repo
-
 }
 
-module "aws_application" {
-  source = "./AWS_APP"
+module "aws_ecs_application" {
+  source = "./AWS_ecs_app"
   aws_region = var.aws_region
   ecs_cluster_name = var.ecs_cluster_name
   ecs_service_name = var.ecs_service_name
@@ -37,5 +35,9 @@ module "aws_application" {
   subnet_public_b_cidr_block = var.subnet_public_b_cidr_block
   subnet_private_a_cidr_block = var.subnet_private_a_cidr_block
   subnet_private_b_cidr_block = var.subnet_private_b_cidr_block
+}
 
+module "aws_lambda_application" {
+  source = "./AWS_lambda_app"
+  lambda_name = var.lambda_name
 }

@@ -5,7 +5,7 @@ data "archive_file" "zip_the_python_code" {
 }
 
 resource "aws_lambda_function" "lambda" {
-  function_name = "${var.ecs_service_name}-lambda"
+  function_name = "${var.lambda_name}-lambda"
   filename         = "${path.module}/python/hello-python.zip"
   role    = aws_iam_role.lambda_role.arn
   handler = "index.lambda_handler"
