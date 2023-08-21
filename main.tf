@@ -39,5 +39,6 @@ module "aws_ecs_application" {
 
 module "aws_lambda_application" {
   source = "./AWS_lambda_app"
+  aws_region = var.aws_region
   lambda_name = var.lambda_name
 }
