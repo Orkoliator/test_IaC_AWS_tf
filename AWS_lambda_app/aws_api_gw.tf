@@ -5,7 +5,7 @@ resource "aws_api_gateway_rest_api" "lambda-gw" {
 resource "aws_api_gateway_resource" "lambda-proxy" {
   rest_api_id = "${aws_api_gateway_rest_api.lambda-gw.id}"
   parent_id   = "${aws_api_gateway_rest_api.lambda-gw.root_resource_id}"
-  path_part   = "/${var.url}"
+  path_part   = "${var.url}"
 }
 
 resource "aws_api_gateway_method" "lambda-proxy" {
