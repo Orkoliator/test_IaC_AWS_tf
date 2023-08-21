@@ -1,4 +1,4 @@
-variable "aws_region" {
+variable "aws_ecs_region" {
     type = string
     default = "eu-central-1"  
 }
