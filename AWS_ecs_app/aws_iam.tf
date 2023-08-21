@@ -15,7 +15,7 @@ resource "aws_iam_role" "test_ecs_task_execution_role" {
 }
 
 resource "aws_iam_role" "test_iam_role" {
-  name = "${var.ecs_service_name}-${var.aws_region}-iam"
+  name = "${var.ecs_service_name}-${var.aws_ecs_region}-iam"
   assume_role_policy = <<EOF
 {
     "Version": "2012-10-17",

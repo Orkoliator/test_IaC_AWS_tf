@@ -23,7 +23,7 @@ module "docker_image" {
 
 module "aws_ecs_application" {
   source = "./AWS_ecs_app"
-  aws_region = var.aws_ecs_region
+  aws_ecs_region = var.aws_ecs_region
   ecs_cluster_name = var.ecs_cluster_name
   ecs_service_name = var.ecs_service_name
   ecr_url = "${module.aws_ecr.ecr_url}"
@@ -39,6 +39,6 @@ module "aws_ecs_application" {
 
 module "aws_lambda_application" {
   source = "./AWS_lambda_app"
-  aws_region = var.aws_lambda_region
+  aws_lambda_region = var.aws_lambda_region
   lambda_name = var.lambda_name
 }

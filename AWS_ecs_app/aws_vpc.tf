@@ -104,7 +104,7 @@ resource "aws_route" "private_ngw" {
 }
 
 resource "aws_security_group" "task_group" {
-  name        = "ingress-${var.ecs_service_name}-${var.aws_region}"
+  name        = "ingress-${var.ecs_service_name}-${var.aws_ecs_region}"
   description = "Allow ingress to API"
   vpc_id      = aws_vpc.app_vpc.id
 }

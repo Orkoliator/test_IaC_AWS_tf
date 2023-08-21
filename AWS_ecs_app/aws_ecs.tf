@@ -1,9 +1,9 @@
 resource "aws_ecs_cluster" "test_ecs_cluster" {
-  name = "${var.ecs_cluster_name}-${var.aws_region}"
+  name = "${var.ecs_cluster_name}-${var.aws_ecs_region}"
 }
 
 resource "aws_ecs_service" "test_ecs_service" {
-  name = "${var.ecs_service_name}-${var.aws_region}-app"
+  name = "${var.ecs_service_name}-${var.aws_ecs_region}-app"
   cluster = aws_ecs_cluster.test_ecs_cluster.id
   task_definition = aws_ecs_task_definition.test_ecs_task_definition.arn
   launch_type = "FARGATE"
@@ -26,7 +26,7 @@ resource "aws_ecs_service" "test_ecs_service" {
 
     load_balancer {
     target_group_arn = aws_lb_target_group.test_api.arn
-    container_name   = "${var.ecs_service_name}-${var.aws_region}-app"
+    container_name   = "${var.ecs_service_name}-${var.aws_ecs_region}-app"
     container_port   = 5000
   }
 
@@ -43,7 +43,7 @@ resource "aws_ecs_task_definition" "test_ecs_task_definition" {
   container_definitions    = <<EOF
 [
   {
-    "name": "${var.ecs_service_name}-${var.aws_region}-app",
+    "name": "${var.ecs_service_name}-${var.aws_ecs_region}-app",
     "image": "${var.ecr_url}:latest",
     "portMappings": [
       {
