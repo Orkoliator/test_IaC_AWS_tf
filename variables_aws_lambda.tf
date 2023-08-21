@@ -1,4 +1,4 @@
-variable "ecs_service_name" {
+variable "lambda_name" {
     type = string
     default = "test"
 }
