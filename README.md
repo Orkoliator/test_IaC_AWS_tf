@@ -1,6 +1,8 @@
 Hello,
 
 This is personal pet project with intention to get some hands-on experience of Jenkins, Terraform and AWS.
+This project includes scripted Jenkins Pipeline with instructions to deploy ECS container and Lambda application in AWS.
+If you want to use this exact repo please make sure that you have replaced python application woth yours and this application should return an answer with html formatting including status code, headers and body.
 
 To make this pipeline work there are few points required:
 
